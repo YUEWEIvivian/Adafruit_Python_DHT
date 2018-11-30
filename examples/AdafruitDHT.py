@@ -43,8 +43,8 @@ import sys
 import http.client as http
 import urllib
 import json
-deviceId ="DF2LmrO6 "
-deviceKey ="0sEXX5jT5gqF67oS" 
+deviceId ="DgzIcPV6"
+deviceKey ="VjFodKWb1iYqKZS1" 
 def post_to_mcs(payload): 
 	headers = {"Content-type": "application/json", "deviceKey": deviceKey} 
 	not_connected = 1 
@@ -77,7 +77,7 @@ humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
 while True:
 	h0, t0= Adafruit_DHT.read_retry(sensor, pin)
 	if h0 is not None and t0 is not None:
-		print('Temp={0:0.1f}*  Humidity={1:0.1f}%'.format(t0, h0))
+		print('Temperature={0:0.1f}*  Humidity={1:0.1f}%'.format(t0, h0))
 		payload = {"datapoints":[{"dataChnId":"Humidity","values":{"value":h0}},{"dataChnId":"Temperature","values":{"value":t0}}]} 
 		post_to_mcs(payload)
 		time.sleep(10) 
