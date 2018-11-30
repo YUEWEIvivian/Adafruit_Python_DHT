@@ -67,11 +67,11 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM) 
 GPIO.setuo(24,GPIO.IN,pull_up_down=GPIO.PUD_UP)
 while True:
-        SwitchStatus=GPIO.input(24)
-        if(SwitchStatus==0):
-                print('Button pressed')
-        else
-                print('Button released')
+	SwitchStatus=GPIO.input(24)
+	if(SwitchStatus==0):
+		print('Button pressed')
+	else:
+		print('Button released')
 # Try to grab a sensor reading.  Use the read_retry method which will retry up
 # to 15 times to get a sensor reading (waiting 2 seconds between each retry).
 humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
@@ -87,7 +87,7 @@ while True:
 	h0, t0= Adafruit_DHT.read_retry(sensor, pin)
 	if h0 is not None and t0 is not None:
 		print('Temperature={0:0.1f}*  Humidity={1:0.1f}%'.format(t0, h0))
-		payload = {"datapoints":[{"dataChnId":"Humidity","values":{"value":h0}},{"dataChnId":"SwitchStatus","values":{"value":SwitchStatus},{"dataChnId":"Temperature","values":{"value":t0}}]} 
+		payload = {"datapoints":[{"dataChnId":"Humidity","values":{"value":h0}},{"dataChnId":"SwitchStatus","values":{"value":SwitchStatus}},{"dataChnId":"Temperature","values":{"value":t0}}]} 
 		post_to_mcs(payload)
 		time.sleep(10) 
 
